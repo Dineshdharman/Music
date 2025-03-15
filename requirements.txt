@@ -1,0 +1,10 @@
+streamlit
+streamlit-webrtc
+mediapipe
+tensorflow
+base32hex
+av
+numpy
+opencv-python-
+webbrowser
+drawing
