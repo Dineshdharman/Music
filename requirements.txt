@@ -5,6 +5,6 @@ tensorflow
 base32hex
 av
 numpy
-opencv-python-
+opencv-python
 webbrowser
 drawing
