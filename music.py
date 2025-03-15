@@ -9,31 +9,26 @@ import drawing
 import webbrowser
 import os
 
-
-
-os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"  # Disable default OpenCV backend
-os.environ["OPENCV_VIDEOIO_PRIORITY_DSHOW"] = "1"  # Use DirectShow (Windows) if needed
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"  
+os.environ["OPENCV_VIDEOIO_PRIORITY_DSHOW"] = "1"  
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Define file paths
 model_path = os.path.join(base_dir, "model.h5")
 labels_path = os.path.join(base_dir, "labels.npy")
 
-# Check if files exist
+
 if not os.path.exists(model_path):
     raise FileNotFoundError(f"Model file not found at {model_path}")
 
 if not os.path.exists(labels_path):
     raise FileNotFoundError(f"Labels file not found at {labels_path}")
 
-# Load model without optimizer state
+
 model = load_model(model_path, compile=False)
 
-# Compile the model (optional)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-# Load labels
+
 label = np.load(labels_path)
 holistic = mp.solutions.holistic
 hands = mp.solutions.hands
